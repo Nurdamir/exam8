@@ -83,7 +83,7 @@ const FormQuote: React.FC = () => {
               {categories.map(category => (
                 <option
                   value={category.id}
-                  key={category.id}
+                  key={Math.random()}
                 >
                   {category.title}
                 </option>

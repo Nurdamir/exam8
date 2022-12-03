@@ -55,6 +55,7 @@ const QuotesBlock = () => {
     <div className="container">
       {loading ? <Spinner/> : quotes.length > 0 ? <div>{quotes.map(item => (
         <QuoteItem
+          key={item.id}
           author={item.author}
           textQuote={item.text}
           onEditClick={() => onChange(item.id!) }
