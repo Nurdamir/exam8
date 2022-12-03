@@ -8,7 +8,7 @@ const Header = () => {
     {name: 'Submit new quote', route: '/add-quote'},
   ];
   return (
-    <header>
+    <header className="mb-3">
       <div className="HeaderInner Container">
         <NavLink
           to='/'

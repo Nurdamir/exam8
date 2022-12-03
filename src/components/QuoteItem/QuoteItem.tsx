@@ -4,7 +4,7 @@ interface Props {
   author: string;
   textQuote: string;
   onEditClick: React.MouseEventHandler;
-  onDeleteClick?: React.MouseEventHandler;
+  onDeleteClick: React.MouseEventHandler;
 }
 
 const QuoteItem: React.FC<Props> = ({author, textQuote, onEditClick, onDeleteClick}) => {
@@ -14,13 +14,13 @@ const QuoteItem: React.FC<Props> = ({author, textQuote, onEditClick, onDeleteCli
         <h3 className="border border-dark rounded-2 p-4">{author}</h3>
         <p className="border border-dark rounded-2 p-4">{textQuote}</p>
         <button
-          className="btn btn-primary"
+          className="btn btn-primary m-2"
           onClick={onEditClick}
         >
           Edit
         </button>
         <button
-          className="btn btn-primary"
+          className="btn btn-danger m-2"
           onClick={onDeleteClick}
         >
           Delete

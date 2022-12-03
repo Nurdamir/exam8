@@ -1,5 +1,5 @@
 export interface Quote {
-  id: string;
+  id?: string;
   author: string;
   category: string;
   text: string;
@@ -7,6 +7,3 @@ export interface Quote {
 
 export type QuoteApi = Omit<Quote, 'id'>;
 
-export interface QuoteList {
-  [id: string]: Quote;
-}
