@@ -1,0 +1,11 @@
+.HomePage {
+    display: flex;
+}
+
+.Categories {
+    width: 30%;
+}
+
+.QuotesList {
+    flex-grow: 1;
+}

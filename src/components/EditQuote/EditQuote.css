@@ -1,0 +1,12 @@
+.EditQuoteForm label {
+    display: block;
+}
+
+.EditQuoteForm input,
+.EditQuoteForm textarea {
+    width: 100%;
+}
+
+.EditQuoteForm textarea {
+    height: 50px;
+}

@@ -1,24 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from "./components/Header/Header";
+import Home from "./containers/Home/Home";
+import {Route, Routes} from "react-router-dom";
+import EditQuote from "./components/EditQuote/EditQuote";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+
+      <main className="main-block">
+        <Routes>
+          <Route path="/" element={(<Home/>)}/>
+          <Route path="/quotes" element={(<Home/>)}/>
+          <Route path="/quotes/:category" element={(<Home/>)}/>
+
+          <Route path="/add-quote" element={(<EditQuote/>)}/>
+          <Route path="/quotes/:id/edit" element={(<EditQuote/>)}/>
+
+          <Route path="*" element={(<h1>Not found!</h1>)}/>
+        </Routes>
+      </main>
     </div>
   );
 }

@@ -1,0 +1,29 @@
+.HeaderInner {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid grey;
+}
+
+.Logo {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.NavList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-self: center;
+}
+
+.NavItem {
+    display: inline-block;
+    padding: 0 20px;
+    border-right: 1px solid grey;
+}
+
+.NavItem:last-child {
+    border-right: none;
+}
