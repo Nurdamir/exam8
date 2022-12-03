@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {Quote} from "../../types";
+import {Quote, QuoteApi, QuoteList} from "../../types";
 import {useNavigate, useParams} from "react-router-dom";
 import QuoteItem from "../../components/QuoteItem/QuoteItem";
 import AxiosApi from "../../axiosApi";
@@ -20,13 +20,13 @@ const QuotesBlock = () => {
   const getQuotes = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await AxiosApi.get(url);
-      let quote = [];
+      const response = await AxiosApi.get<QuoteList>(url);
+      let quote: Quote[] = [];
       if (response.data !== null) {
         quote = Object.keys(response.data).map(key => {
           const quote = response.data[key];
           quote.id = key;
-          return quote
+          return quote;
         });
       }
       setQuotes(quote);
@@ -45,7 +45,7 @@ const QuotesBlock = () => {
 
   const onDelete = async (id: string) => {
     try {
-      await AxiosApi.delete('/quotes/' + id + '.json')
+      await AxiosApi.delete<QuoteApi>('/quotes/' + id + '.json')
     } finally {
       getQuotes().catch(console.error);
     }

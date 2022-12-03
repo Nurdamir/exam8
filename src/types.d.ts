@@ -7,3 +7,6 @@ export interface Quote {
 
 export type QuoteApi = Omit<Quote, 'id'>;
 
+export interface QuoteList {
+  [id: string]: Quote;
+}

@@ -15,10 +15,8 @@ function App() {
           <Route path="/" element={(<Home/>)}/>
           <Route path="/quotes" element={(<Home/>)}/>
           <Route path="/quotes/:category" element={(<Home/>)}/>
-
           <Route path="/add-quote" element={(<FormQuote/>)}/>
           <Route path="/quotes/:id/edit" element={(<FormQuote/>)}/>
-
           <Route path="*" element={(<h1>Not found!</h1>)}/>
         </Routes>
       </main>

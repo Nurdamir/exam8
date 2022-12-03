@@ -1,8 +1,8 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {categories} from "../../constants";
-import {Quote, QuoteApi} from "../../types";
 import {useNavigate, useParams} from "react-router-dom";
 import AxiosApi from "../../axiosApi";
+import {categories} from "../../constants";
+import {Quote, QuoteApi} from "../../types";
 
 
 const FormQuote: React.FC = () => {
@@ -13,12 +13,11 @@ const FormQuote: React.FC = () => {
     category: '',
     text: '',
   });
-  const [loading, setLoading] = useState(false);
 
   const fetchData = useCallback(async (id: string) => {
     const url = '/quotes/' + id + '.json'
     try {
-      const response = await AxiosApi.get(url);
+      const response = await AxiosApi.get<QuoteApi>(url);
       setQuote(response.data)
     } finally {
     }
@@ -37,38 +36,32 @@ const FormQuote: React.FC = () => {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     if (quote.author && quote.text && quote.category) {
       try {
-        await AxiosApi.post('/quotes.json', quote)
+        await AxiosApi.post<Quote>('/quotes.json', quote)
       } catch (e) {
         throw new Error();
       } finally {
-        setLoading(false);
         navigate('/');
       }
     } else {
       alert('Не все поля заполнены!');
-      setLoading(false);
     }
   }
 
   const updateQuote = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
     const url = '/quotes/' + id + '.json'
     if (quote.author && quote.text && quote.category) {
       try {
-        await AxiosApi.put(url, quote)
+        await AxiosApi.put<Quote>(url, quote)
       } catch (e) {
         throw new Error();
       } finally {
-        setLoading(false);
         navigate('/');
       }
     } else {
       alert('Не все поля заполнены!');
-      setLoading(false);
     }
   };
 
